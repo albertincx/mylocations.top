@@ -1,1 +1,78 @@
-In Development
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps Startup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Revolutionize Your Location-Based Services</h1>
+        <p>Our maps startup provides powerful tools and APIs to help you build innovative location-based applications.</p>
+        <a href="#" class="cta">Get Started</a>
+        <a href="#" id="open-map-button" class="open-map-button cta">open-map-button</a>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <ul>
+            <li>Accurate and up-to-date maps</li>
+<!--            <li>Seamless integration with your applications</li>-->
+<!--            <li>Customizable map styles and branding</li>-->
+<!--            <li>Real-time traffic and routing data</li>-->
+            <li>Geolocation and geocoding services</li>
+        </ul>
+    </section>
+
+    <section class="pricing">
+        <h2>Contact Us</h2>
+        <div class="pricing-plans">
+
+        </div>
+    </section>
+
+    <section class="contact">
+<!--        <h2>Contact Us</h2>-->
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="cta">Send Message</button>
+        </form>
+    </section>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="map-container" id="map"></div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2023 Maps Startup. All rights reserved.</p>
+</footer>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
