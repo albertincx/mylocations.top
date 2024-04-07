@@ -109,21 +109,60 @@ closeButton.addEventListener('click', () => {
         m.style.display = 'none';
     }
 });
-
 document.addEventListener('DOMContentLoaded', () => {
-    let mapOptions = {
-        center:[51.958, 9.141],
-        zoom:10
-    }
+    // Get the modal and button elements
+    const modal = document.querySelector('.modal');
+    const openMapButton = document.querySelector('.open-map-modal');
+    const closeButton = document.querySelector('.close-button');
+
+    // Initialize the Mapbox map
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWxiZXJ0aW5jeCIsImEiOiJjbHVwOHB3b28yMzVzMmtsaTNkbW5qb2JyIn0.vjqAUMrerzDx9PXgj_kBsA';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-0.09, 51.505],
+        zoom: 13
+    });
+
+    // Add a marker
+    new mapboxgl.Marker()
+        .setLngLat([-0.09, 51.505])
+        .setPopup(new mapboxgl.Popup().setHTML('A pretty CSS-styled popup.<br> Easily customizable.'))
+        .addTo(map);
+
+    // Show the modal when the button is clicked
+    openMapButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    // Close the modal when the close button or outside the modal is clicked
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    return false;
+    // let mapOptions = {
+    //     center:[51.958, 9.141],
+    //     zoom:10
+    // }
+    //
+    //
+    // let map = new L.map('map' , mapOptions);
+    //
+    // let layer = new L.TileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png');
+    // map.addLayer(layer);
+    //
+    // let marker = new L.Marker([51.958, 9.141]);
+    // marker.addTo(map);
 
 
-    let map = new L.map('map' , mapOptions);
 
-    let layer = new L.TileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png');
-    map.addLayer(layer);
-
-    let marker = new L.Marker([51.958, 9.141]);
-    marker.addTo(map);
     // Initialize the map
     // const map = L.map('map').setView([51.505, -0.09], 13);
     //
