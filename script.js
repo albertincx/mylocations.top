@@ -42,11 +42,18 @@ pricingButtons.forEach(button => {
         alert(`You selected the "${e.target.parentNode.querySelector('h3').textContent}" plan.`);
     });
 });
+function openOpenStreetMapModal2() {
+    //modal-1
+    const m = document.querySelector('.modal-2');
+    if (m) {
+        m.style.display = 'block';
+    }
+}
 function openOpenStreetMapModal() {
     // Create the modal element
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-    const m = document.querySelector('.modal');
+    // const modal = document.createElement('div');
+    // modal.classList.add('modal');
+    const m = document.querySelector('.modal-1');
     if (m) {
         m.style.display = 'block';
     }
@@ -102,16 +109,23 @@ function openOpenStreetMapModal() {
 }
 const openMapButton = document.getElementById('open-map-button');
 const closeButton = document.querySelector('.close-button');
+const closeButton2 = document.querySelector('.close-button-2');
 openMapButton.addEventListener('click', openOpenStreetMapModal);
 closeButton.addEventListener('click', () => {
-    const m = document.querySelector('.modal');
+    const m = document.querySelector('.modal-1');
+    if (m) {
+        m.style.display = 'none';
+    }
+});
+closeButton2.addEventListener('click', () => {
+    const m = document.querySelector('.modal-2');
     if (m) {
         m.style.display = 'none';
     }
 });
 document.addEventListener('DOMContentLoaded', () => {
     // Get the modal and button elements
-    const modal = document.querySelector('.modal');
+    const modal = document.querySelector('.modal-1');
     const openMapButton = document.querySelector('.open-map-modal');
     const closeButton = document.querySelector('.close-button');
 
@@ -146,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 document.addEventListener('DOMContentLoaded', () => {
-    return false;
+    // return false;
     // let mapOptions = {
     //     center:[51.958, 9.141],
     //     zoom:10
@@ -164,15 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Initialize the map
-    // const map = L.map('map').setView([51.505, -0.09], 13);
-    //
-    // // Add the OpenStreetMap tile layer
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
-    //
-    // // Add a marker
-    // L.marker([51.505, -0.09]).addTo(map)
-    //     .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
-    //     .openPopup();
+    const map = L.map('map2').setView([51.505, -0.09], 13);
+
+    // Add the OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add a marker
+    L.marker([51.505, -0.09]).addTo(map)
+        .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
+        .openPopup();
 });

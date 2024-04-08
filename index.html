@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maps Startup</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet"/>
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
 </head>
 <body>
 <header>
@@ -21,7 +23,8 @@
 <main>
     <section class="hero">
         <h1>Revolutionize Your Location-Based Services</h1>
-        <p>Our maps startup provides powerful tools and APIs to help you build innovative location-based applications.</p>
+        <p>Our maps startup provides powerful tools and APIs to help you build innovative location-based
+            applications.</p>
         <a href="#" class="cta">Get Started</a>
         <a href="#" id="open-map-button" class="open-map-button cta open-map-modal">open-map-button</a>
     </section>
@@ -30,9 +33,9 @@
         <h2>Key Features</h2>
         <ul>
             <li>Accurate and up-to-date maps</li>
-<!--            <li>Seamless integration with your applications</li>-->
-<!--            <li>Customizable map styles and branding</li>-->
-<!--            <li>Real-time traffic and routing data</li>-->
+            <!--            <li>Seamless integration with your applications</li>-->
+            <!--            <li>Customizable map styles and branding</li>-->
+            <!--            <li>Real-time traffic and routing data</li>-->
             <li>Geolocation and geocoding services</li>
         </ul>
     </section>
@@ -45,7 +48,7 @@
     </section>
 
     <section class="contact">
-<!--        <h2>Contact Us</h2>-->
+        <!--        <h2>Contact Us</h2>-->
         <form>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -59,18 +62,29 @@
             <button type="submit" class="cta">Send Message</button>
         </form>
     </section>
-    <div class="modal">
+    <div class="modal modal-1">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <div class="map-container" id="map"></div>
         </div>
     </div>
+    <div class="modal modal-2">
+        <div class="modal-content">
+            <span class="close-button close-button-2">&times;</span>
+            <div class="map-container" id="map2"></div>
+        </div>
+    </div>
 </main>
 
 <footer>
-    <p>&copy; 2023 Maps Startup. All rights reserved.</p>
+    <div class="contact-links">
+        <a href="https://t.me/mylocationstop">Telegram: @mylocationstop</a>
+    </div>
+    <p>&copy; 2024 Maps Startup. All rights reserved.</p>
 </footer>
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
 <script src="script.js"></script>
 </body>
 </html>
