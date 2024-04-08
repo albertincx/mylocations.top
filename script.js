@@ -58,17 +58,17 @@ function openOpenStreetMapModal2() {
     }
 
     // Initialize the map
-    map2 = L.map('map2').setView([51.505, -0.09], 13);
+    map2 = L.map('map2').locate({setView: true, maxZoom: 13});
 
     // Add the OpenStreetMap tile layer
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         subdomains: 'abcd',
         maxZoom: 20
-    }).addTo(map);
+    }).addTo(map2);
 
     // Add a marker
-    L.marker([51.505, -0.09]).addTo(map)
+    L.marker([51.505, -0.09]).addTo(map2)
         .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
         .openPopup();
 }
