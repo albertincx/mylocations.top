@@ -179,10 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the map
     const map = L.map('map2').setView([51.505, -0.09], 13);
-
+//https://tile.openstreetmap.org/{z}/{x}/{y}.png
     // Add the OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        maxZoom: 20
     }).addTo(map);
 
     // Add a marker
