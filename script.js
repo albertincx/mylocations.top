@@ -1,5 +1,6 @@
 // Get the navigation links
 const navLinks = document.querySelectorAll('nav a');
+var map2;
 
 // Add click event listeners to the navigation links
 navLinks.forEach(link => {
@@ -42,7 +43,13 @@ pricingButtons.forEach(button => {
         alert(`You selected the "${e.target.parentNode.querySelector('h3').textContent}" plan.`);
     });
 });
+
+function openOpenStreetMapModal() {
+    //document.querySelectorAll('[data-longitude]')
+}
+
 function openOpenStreetMapModal2() {
+    if (map2) return;
     //modal-1
     const m = document.querySelector('.modal-2');
 
@@ -51,7 +58,7 @@ function openOpenStreetMapModal2() {
     }
 
     // Initialize the map
-    const map = L.map('map2').setView([51.505, -0.09], 13);
+    map2 = L.map('map2').setView([51.505, -0.09], 13);
 
     // Add the OpenStreetMap tile layer
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png', {
