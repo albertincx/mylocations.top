@@ -1,3 +1,19 @@
+function loadScript(url, callback) {
+    // Create a new script element
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Add an event listener for when the script has finished loading
+    script.onload = function () {
+        // Call the callback function when the script has finished loading
+        callback();
+    };
+
+    // Append the script to the document's head
+    document.head.appendChild(script);
+}
+
 // Get the navigation links
 const navLinks = document.querySelectorAll('nav a');
 var map2;
@@ -7,13 +23,20 @@ navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetSection = document.querySelector(e.target.getAttribute('href'));
-        targetSection.scrollIntoView({ behavior: 'smooth' });
+        targetSection.scrollIntoView({behavior: 'smooth'});
     });
 });
 
 // Get the contact form
 const contactForm = document.querySelector('.contact form');
 
+window.__arsfChatIdg='4174303520';
+window.__arsfChatUrl = 'api.cafechat.app';
+function getSuccess () {
+    const div = document.createElement('div');
+    div.innerText = 'Thank you for contacting us! We will get back to you shortly.'
+    return div.innerHTML;
+}
 // Add submit event listener to the contact form
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -24,11 +47,34 @@ contactForm.addEventListener('submit', (e) => {
         email: document.getElementById('email').value,
         message: document.getElementById('message').value
     };
-
+    contactForm.innerHTML = document.querySelector('.loader').outerHTML;
     // Simulate form submission (replace with actual API call)
-    console.log('Form data:', formData);
-    alert('Thank you for contacting us! We will get back to you shortly.');
-
+    // console.log('Form data:', formData);
+    // alert('Thank you for contacting us! We will get back to you shortly.');
+    const cb = () => {
+        // console.log('Script has finished loading!');
+        const message = { g: '', uid: '', message: JSON.stringify(formData) }
+        message.g = window.__arsfChatIdg || '';
+        if (window.__arsfChat) {
+            window.__arsfChat.send(JSON.stringify(message));
+            contactForm.innerHTML = getSuccess();
+        } else {
+            const cc = new WebSocket(`wss://${window.__arsfChatUrl}/`);
+            cc.onopen = () => {
+                window.__arsfChat = cc;
+                window.__arsfChat.send(JSON.stringify(message));
+                contactForm.innerHTML = getSuccess();
+            }
+        }
+        // Add any additional code you want to run after the script has loaded
+    }
+    if (window.__arsfChat) {
+        // loaded
+        cb();
+    } else {
+        // Example usage
+        loadScript('//cafechat.app/start.js', cb);
+    }
     // Clear the form fields
     contactForm.reset();
 });
@@ -40,11 +86,11 @@ const pricingButtons = document.querySelectorAll('.plan a.cta');
 pricingButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
-        alert(`You selected the "${e.target.parentNode.querySelector('h3').textContent}" plan.`);
+        // alert(`You selected the "${e.target.parentNode.querySelector('h3').textContent}" plan.`);
     });
 });
 
-function openOpenStreetMapModal2() {
+function openOpenStreetMapModal() {
     //modal-1
     const m = document.querySelector('.modal-2');
 
@@ -63,81 +109,24 @@ function openOpenStreetMapModal2() {
         maxZoom: 20
     }).addTo(map2);
 // latlng
-navigator.geolocation.getCurrentPosition(function(location) {
-    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-     //alert(latlng);
-    // var mymap = L.map('mapid').setView(latlng, 13)
-    // L.marker().addTo(map2)
+    navigator.geolocation.getCurrentPosition(function (location) {
+        var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+        //alert(latlng);
+        // var mymap = L.map('mapid').setView(latlng, 13)
+        // L.marker().addTo(map2)
 
 
-    L.marker(latlng)
-    .addTo(map2)
-    .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
-    .openPopup();
-  });
+        L.marker(latlng)
+            .addTo(map2)
+            .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
+            .openPopup();
+    });
     // Add a marker
     // L.marker([51.505, -0.09]).addTo(map2)
     //     .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
     //     .openPopup();
 }
-function openOpenStreetMapModal() {
-    // Create the modal element
-    // const modal = document.createElement('div');
-    // modal.classList.add('modal');
-    const m = document.querySelector('.modal-1');
-    if (m) {
-        m.style.display = 'block';
-    }
-    return false;
-    // Create the modal content
-    // const modalContent = document.createElement('div');
-    // modalContent.classList.add('modal-content');
-    //
-    // // Create the map container
-    // const mapContainer = document.createElement('div');
-    // mapContainer.classList.add('map-container');
-    //
-    // // Create the close button
-    // const closeButton = document.createElement('span');
-    // closeButton.classList.add('close-button');
-    // closeButton.textContent = '&times;';
-    //
-    // // Append the elements to the modal
-    // modalContent.appendChild(mapContainer);
-    // modalContent.appendChild(closeButton);
-    // modal.appendChild(modalContent);
-    //
-    // // Append the modal to the body
-    // document.body.appendChild(modal);
-    //
-    // // Initialize the map
-    // const map = L.map(mapContainer).setView([51.505, -0.09], 13);
-    //
-    // // Add the OpenStreetMap tile layer
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
-    //
-    // // Add a marker
-    // L.marker([51.505, -0.09]).addTo(map)
-    //     .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
-    //     .openPopup();
-    //
-    // // Show the modal
-    // modal.style.display = 'block';
-    //
-    // // Add a click event listener to the close button
-    // closeButton.addEventListener('click', () => {
-    //     modal.style.display = 'none';
-    // });
-    //
-    // // Add a click event listener to the modal to close it when clicked outside the content
-    // window.addEventListener('click', (event) => {
-    //     if (event.target === modal) {
-    //         modal.style.display = 'none';
-    //     }
-    // });
-}
+
 const openMapButton = document.getElementById('open-map-button');
 const closeButton = document.querySelector('.close-button');
 const closeButton2 = document.querySelector('.close-button-2');
@@ -189,20 +178,4 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
         }
     });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    // return false;
-    // let mapOptions = {
-    //     center:[51.958, 9.141],
-    //     zoom:10
-    // }
-    //
-    //
-    // let map = new L.map('map' , mapOptions);
-    //
-    // let layer = new L.TileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png');
-    // map.addLayer(layer);
-    //
-    // let marker = new L.Marker([51.958, 9.141]);
-    // marker.addTo(map);
 });

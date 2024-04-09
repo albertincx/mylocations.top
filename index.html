@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maps Startup</title>
-    <link rel="stylesheet" href="css/styles.css?v=1">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/styles.css?v=7">
     <link rel = "stylesheet" href = "css/leaflet.css" />
-
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 </header>
-
 <main>
-    <section class="hero bg">
+    <section class="hero bg" id="home">
         <h1>Revolutionize Your Location-Based Services</h1>
         <p>Our maps startup provides powerful tools and APIs to help you build innovative location-based
             applications.</p>
@@ -29,7 +26,7 @@
         <a href="#" id="open-map-button" class="open-map-button cta open-map-modal">open-map-button</a>
     </section>
 
-    <section class="features">
+    <section class="features" id="features">
         <h2>Key Features</h2>
         <ul>
             <li>Accurate and up-to-date maps</li>
@@ -47,7 +44,7 @@
         </div>
     </section>
 
-    <section class="contact">
+    <section class="contact" id="contact">
         <!--        <h2>Contact Us</h2>-->
         <form>
             <label for="name">Name:</label>
@@ -75,15 +72,32 @@
         </div>
     </div>
 </main>
-
 <footer>
     <div class="contact-links">
         <a href="https://t.me/mylocationstop">Telegram: @mylocationstop</a>
     </div>
     <p>&copy; 2024 My locations. All rights reserved.</p>
 </footer>
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<div hidden>
+    <div class="loader">
+        <style scoped>
+            .loader {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </div>
+</div>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="script.js?v=5"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>
