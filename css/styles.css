@@ -4,7 +4,12 @@ body {
     margin: 0;
     padding: 0;
 }
-
+body, html {
+    height: 100%;
+}
+* {
+    box-sizing: border-box;
+}
 a {
     text-decoration: none;
     color: #007bff;
@@ -39,12 +44,13 @@ nav a:hover {
 
 /* Hero Section Styles */
 .hero {
-    /*background-image: url('hero-background.jpg');*/
     background-size: cover;
     background-position: center;
     color: #fff;
     padding: 5rem 1rem;
     text-align: center;
+    font-size: 3.4375rem;
+    line-height: 110%;
 }
 
 .hero h1 {
@@ -63,6 +69,8 @@ nav a:hover {
     color: #fff;
     display: inline-block;
     font-size: 1.2rem;
+    line-height: 100%;
+
     padding: 0.8rem 1.5rem;
 }
 
@@ -219,10 +227,8 @@ nav a:hover {
 }
 
 .hero {
-    /*background-image: url('hero-background.jpg');*/
     background-size: cover;
     background-position: center;
-    color: #fff;
     padding: 8rem 1rem 3rem; /* Increased top padding to account for fixed header */
     text-align: center;
 }
@@ -302,4 +308,39 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+.bg {
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+    ), url("../images/back.webp");
+    /*color: #000;*/
+    /*filter: blur(8px);*/
+    /*-webkit-filter: blur(8px);*/
+    /* top, transparent black, faked with gradient */
+
+    /* bottom, image */
+}
+
+.bg-image {
+    /* The image used */
+    background-image: url("../images/back.webp");
+
+
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg2 {
+    position: relative;
+    z-index: 2;
 }

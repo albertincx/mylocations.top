@@ -44,18 +44,14 @@ pricingButtons.forEach(button => {
     });
 });
 
-function openOpenStreetMapModal() {
-    //document.querySelectorAll('[data-longitude]')
-}
-
 function openOpenStreetMapModal2() {
-    if (map2) return;
     //modal-1
     const m = document.querySelector('.modal-2');
 
     if (m) {
         m.style.display = 'block';
     }
+    if (map2) return;
 
     // Initialize the map
     map2 = L.map('map2').locate({setView: true, maxZoom: 13});
@@ -66,11 +62,23 @@ function openOpenStreetMapModal2() {
         subdomains: 'abcd',
         maxZoom: 20
     }).addTo(map2);
+// latlng
+navigator.geolocation.getCurrentPosition(function(location) {
+    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+     //alert(latlng);
+    // var mymap = L.map('mapid').setView(latlng, 13)
+    // L.marker().addTo(map2)
 
+
+    L.marker(latlng)
+    .addTo(map2)
+    .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
+    .openPopup();
+  });
     // Add a marker
-    L.marker([51.505, -0.09]).addTo(map2)
-        .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
-        .openPopup();
+    // L.marker([51.505, -0.09]).addTo(map2)
+    //     .bindPopup('A pretty CSS-styled popup.<br> Easily customizable.')
+    //     .openPopup();
 }
 function openOpenStreetMapModal() {
     // Create the modal element
