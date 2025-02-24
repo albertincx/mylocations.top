@@ -1,9 +1,9 @@
-(function injectMapCode() {
-    function createInjectableScript() {
+(function injectMapCode(addressSelector = '.address') {
+    function createInjectableScript(selector) {
         const script = `
             (function() {
-                // Global variable for address selector
-                const ADDRESS_SELECTOR = '.address';
+                // Configurable address selector passed from injection function
+                const ADDRESS_SELECTOR = '${selector}';
 
                 async function loadResources() {
                     // Load Leaflet CSS
@@ -122,6 +122,7 @@
                 }
 
                 function showAddressesOnMap() {
+                    // Using the configurable selector
                     const addresses = Array.from(document.querySelectorAll(ADDRESS_SELECTOR))
                         .map(el => el.textContent.trim())
                         .filter(Boolean);
@@ -355,6 +356,6 @@
     styleElement.textContent = mapStyles;
     document.head.appendChild(styleElement);
 
-    // Inject script
-    document.head.appendChild(createInjectableScript());
-})(); 
+    // Inject script with the provided selector
+    document.head.appendChild(createInjectableScript(addressSelector));
+}); // Don't auto-execute, allow parameter passing 
